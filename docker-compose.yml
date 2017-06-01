@@ -1,0 +1,15 @@
+
+version: "2"
+
+services:
+  lambda:
+    image: lambci/lambda
+    volumes:
+      - .:/var/task
+    environment:
+      AWS_REGION: us-west-2
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_LAMBDA_FUNCTION_HANDLER: handler.html2pdf
+      AWS_LAMBDA_EVENT_BODY: /var/task/event.json
+      WEB_HOOK_URI: $WEB_HOOK_URI

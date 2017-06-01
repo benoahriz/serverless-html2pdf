@@ -1,0 +1,24 @@
+{
+  "name": "serverless-hackweek",
+  "version": "1.0.0",
+  "description": "Serverless webpack example",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Rizkowsky <benoahriz@gmail.com>",
+  "license": "GPL",
+  "devDependencies": {
+    "serverless-webpack": "^1.0.0-beta.2",
+    "webpack": "^1.13.1",
+    "webpack-node-externals": "^1.3.3",
+    "aws-sdk": "^2.5.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.5.3",
+    "hewer": "^0.3.1",
+    "serverless-optimizer-plugin": "^2.5.1",
+    "slack-node": "^0.1.8",
+    "wkhtmltopdf": "^0.3.1"
+  }
+}

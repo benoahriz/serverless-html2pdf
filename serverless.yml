@@ -1,0 +1,50 @@
+service: serverless-hackweek
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  region: us-west-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeFunction"
+        - 's3:PutObject'
+        - 's3:PutObjectAcl'
+        - 's3:GetObject'
+        - 's3:GetObjectAcl'
+        - 's3:ListObject'
+      Resource:
+          - "arn:aws:s3:::serverless-hackweek/*"
+  apiKeys:
+    - mytestapikey
+plugins:
+  - serverless-run-function-plugin
+
+functions:
+  html2pdf:
+    handler: handler.html2pdf
+    events:
+      - http:
+          path: convert/html2pdf
+          method: post
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+  hellopost:
+    handler: handler.hello
+    events:
+      - http:
+          path: hellopost
+          method: post
+
+resources:
+  Resources:
+    NewResource:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: serverless-hackweek
+
